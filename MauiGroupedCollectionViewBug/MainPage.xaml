@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiGroupedCollectionViewBug"
+             x:DataType="local:MainPageViewModel"
+             Title="Main Page"
+             x:Class="MauiGroupedCollectionViewBug.MainPage">  
+    <CollectionView ItemsSource="{Binding Items}"
+                    IsGrouped="True"
+                    SelectionMode="None">
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate x:DataType="local:ModelGroup">
+                <Grid>
+                    <local:GroupLabel Text="{Binding Name}" Style="{StaticResource GroupHeaderLabel}" />
+                </Grid>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:Model">
+                <Label Text="{Binding Text}" Padding="5, 30" BackgroundColor="Green" />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
